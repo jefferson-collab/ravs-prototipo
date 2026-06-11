@@ -1919,7 +1919,7 @@ function camada(n, titulo, sub, children) {
     children);
 }
 
-function casoScreen() {
+function casoScreenLegacy() {
   var page = h("div", { style: { padding: "34px 44px 60px", maxWidth: "1120px", margin: "0 auto" }, "data-screen-label": "Caso · Theo" });
   page.appendChild(h("div", { style: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "20px", marginBottom: "30px" } },
     (function () { var b = h("button", { style: { display: "inline-flex", alignItems: "center", gap: "7px", border: 0, background: "none", color: T.mute, cursor: "pointer", font: "500 13px " + T.sans, padding: 0 } }, icon("arrowLeft", 17), "Voltar à Mesa"); b.addEventListener("click", function () { go("mesa"); }); return b; })(),
@@ -1928,6 +1928,121 @@ function casoScreen() {
   page.appendChild(camada("02", "Theo por inteiro", "Seis dimensões, escola e família lado a lado — para enxergá-lo além das notas. Toque numa fonte para abrir os dados.",
     h("div", {}, h("div", { style: { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px" } }, DIMENSOES.map(dimCard)), necessidadesCard())));
   page.appendChild(camada("03", "Acompanhamento", "Linha do tempo e combinados", camadaTempo()));
+  return page;
+}
+function acompanhamentoSection(title, children, sub) {
+  return h("section", { style: { marginTop: "34px" } },
+    rule(44, 0, 14),
+    h("div", { style: { display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "16px", flexWrap: "wrap" } },
+      h("h2", { style: { font: "400 23px " + T.serif, color: T.olive, margin: 0, letterSpacing: "-.01em" } }, title),
+      sub ? h("span", { style: { font: "400 12px " + T.sans, color: T.mute, textAlign: "right" } }, sub) : null),
+    h("div", { style: { marginTop: "18px" } }, children));
+}
+
+function acompanhamentoCard(children, style) {
+  var st = { background: T.panel, border: "1px solid " + T.line, borderRadius: "14px", padding: "22px 24px",
+    boxShadow: "0 1px 2px rgba(28,28,30,.04)" };
+  if (style) for (var k in style) st[k] = style[k];
+  return h("div", { style: st }, children);
+}
+
+function planoSemanaCard(p) {
+  return acompanhamentoCard([
+    h("div", { style: { display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "14px" } },
+      h("span", { style: { color: T.olive, flex: "none", marginTop: "2px" } }, icon("check", 15)),
+      h("div", { style: { font: "500 14px/1.5 " + T.sans, color: T.ink } }, p.acao)),
+    h("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px 22px" } },
+      [
+        ["Responsável", p.resp],
+        ["Prazo", p.prazo],
+        ["Evidência esperada", p.evidencia],
+        ["Revisão", p.revisao],
+      ].map(function (item) {
+        return h("div", { style: { display: "flex", flexDirection: "column", gap: "3px" } },
+          h("span", { style: { font: "600 9.5px " + T.sans, letterSpacing: ".09em", textTransform: "uppercase", color: T.mute } }, item[0]),
+          h("span", { style: { font: "400 12.5px/1.45 " + T.sans, color: T.body } }, item[1]));
+      }))
+  ]);
+}
+
+function historicoRecenteItem(ev, last) {
+  var c = ev.tone === "terra" ? T.terraInk : ev.tone === "slate" ? T.slate : T.olive;
+  return h("div", { style: { display: "flex", gap: "14px" } },
+    h("div", { style: { flex: "none", display: "flex", flexDirection: "column", alignItems: "center" } },
+      h("span", { style: { width: "10px", height: "10px", borderRadius: "999px", background: c, marginTop: "5px" } }),
+      last ? null : h("span", { style: { flex: "1", width: "1px", background: T.line, marginTop: "5px" } })),
+    h("div", { style: { paddingBottom: last ? 0 : "20px", flex: "1" } },
+      h("div", { style: { display: "flex", alignItems: "center", gap: "8px", marginBottom: "5px", flexWrap: "wrap" } },
+        h("span", { style: { font: "600 10px " + T.sans, letterSpacing: ".08em", textTransform: "uppercase", color: T.mute } }, ev.quando)),
+      h("div", { style: { font: "400 13px/1.6 " + T.sans, color: T.body, maxWidth: "640px" } }, ev.texto)));
+}
+
+function casoScreen() {
+  var motivos = [
+    "3 atritos em atividades em dupla nos últimos 8 dias",
+    "Família relatou isolamento no fim de semana",
+    "Queda recente em Matemática em relação ao próprio histórico"
+  ];
+  var fontes = [
+    { label: "Professora", tone: "olive" },
+    { label: "Família", tone: "terra" },
+    { label: "Registro escolar", tone: "slate" },
+    { label: "Coordenação", tone: "charcoal" }
+  ];
+  var plano = [
+    { acao: "Observar Theo em atividades em dupla por 5 dias", resp: "Profa. Letícia", prazo: "até sexta-feira", evidencia: "2 registros curtos sobre participação e conflitos", revisao: "segunda-feira" },
+    { acao: "Conversar com a família sobre rotina e isolamento", resp: "Renata, coordenação", prazo: "esta semana", evidencia: "família confirma se houve mudança recente em casa", revisao: "em 7 dias" }
+  ];
+  var historico = [
+    { quando: "Hoje · Professora", tone: "olive", texto: "Theo evitou participar da atividade em dupla e pediu para fazer sozinho." },
+    { quando: "Ontem · Família", tone: "terra", texto: "Responsável relatou que Theo falou menos sobre os colegas no fim de semana." },
+    { quando: "Há 4 dias · Registro escolar", tone: "slate", texto: "Houve atrito durante atividade em grupo; mediação adulta resolveu no momento." },
+    { quando: "Há 8 dias · Aprendizagem", tone: "olive", texto: "Entrega de Matemática ficou abaixo do padrão recente do próprio Theo." }
+  ];
+
+  var page = h("div", { style: { padding: "34px 44px 60px", maxWidth: "980px", margin: "0 auto" }, "data-screen-label": "Acompanhamento do Theo" });
+  page.appendChild(h("div", { style: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "20px", marginBottom: "24px" } },
+    (function () { var b = h("button", { style: { display: "inline-flex", alignItems: "center", gap: "7px", border: 0, background: "none", color: T.mute, cursor: "pointer", font: "500 13px " + T.sans, padding: 0 } }, icon("arrowLeft", 17), "Voltar à Mesa"); b.addEventListener("click", function () { go("mesa"); }); return b; })(),
+    btn({ kind: "secondary", icon: "mail", label: "Preparar devolutiva", onClick: function () { go("devolutiva"); } })));
+
+  page.appendChild(acompanhamentoCard([
+    h("div", { style: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "18px", flexWrap: "wrap" } },
+      h("div", { style: { minWidth: 0 } },
+        h("div", { style: { font: "600 11px " + T.sans, letterSpacing: ".14em", textTransform: "uppercase", color: T.terraInk, marginBottom: "9px" } }, "Acompanhamento"),
+        h("h1", { style: { font: "400 36px " + T.serif, color: T.ink, letterSpacing: "-.02em", margin: 0, lineHeight: "1.05" } }, "Acompanhamento do Theo"),
+        h("div", { style: { font: "400 14px " + T.sans, color: T.mute, marginTop: "10px" } }, "Caso de convivência e aprendizagem · dados simulados")),
+      statusBadge("andamento", "Aberto pela coordenação · revisão em 7 dias")),
+    h("div", { style: { marginTop: "20px", borderTop: "1px solid " + T.line, paddingTop: "15px", display: "flex", alignItems: "center", gap: "7px", font: "600 11.5px " + T.sans, color: T.mute } },
+      icon("lock", 13), "Sem diagnóstico. Sem ranking. Você decide.")
+  ], { padding: "26px 28px", borderColor: T.terraLight, boxShadow: "0 10px 30px -18px rgba(28,28,30,.22)" }));
+
+  page.appendChild(acompanhamentoSection("Por que este acompanhamento está aberto?",
+    acompanhamentoCard(h("ul", { style: { margin: 0, paddingLeft: "18px", display: "flex", flexDirection: "column", gap: "10px" } },
+      motivos.map(function (m) { return h("li", { style: { font: "400 14px/1.6 " + T.sans, color: T.body } }, m); })))));
+
+  page.appendChild(acompanhamentoSection("O que já sabemos",
+    acompanhamentoCard([
+      h("div", { style: { display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "14px" } }, fontes.map(function (f) { return dimBadge(f.label, f.tone); })),
+      h("div", { style: { font: "400 14px/1.65 " + T.sans, color: T.body, maxWidth: "620px" } }, "Os sinais vêm de mais de uma fonte, mas ainda precisam de decisão humana.")
+    ])));
+
+  page.appendChild(acompanhamentoSection("Próximo passo sugerido",
+    acompanhamentoCard([
+      suggestionBox("Conversar com a família esta semana e pedir uma observação curta à professora sobre atividades em dupla.", [icon("compass", 12), " Sugestão do Prumo · você decide"], false, null),
+      h("div", { style: { display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "18px" } },
+        btn({ kind: "primary", icon: "check", label: "Definir próximo passo", onClick: function () { showToast("Próximo passo definido para revisão humana"); } }),
+        btn({ kind: "secondary", label: "Pedir observação curta", onClick: function () { showToast("Pedido de observação curta preparado"); } }),
+        btn({ kind: "secondary", label: "Preparar devolutiva", onClick: function () { go("devolutiva"); } }))
+    ])));
+
+  page.appendChild(acompanhamentoSection("Plano desta semana",
+    h("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", alignItems: "stretch" } }, plano.map(planoSemanaCard))));
+
+  page.appendChild(acompanhamentoSection("Histórico recente",
+    acompanhamentoCard([
+      h("div", {}, historico.map(function (ev, i) { return historicoRecenteItem(ev, i === historico.length - 1); })),
+      h("div", { style: { marginTop: "18px" } }, btn({ kind: "secondary", icon: "clock", label: "Ver histórico completo", onClick: function () { showToast("Histórico completo permanece no caso, abaixo da dobra"); } }))
+    ])));
   return page;
 }
 window.casoScreen = casoScreen;
