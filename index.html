@@ -284,7 +284,7 @@ window.FOTOS = FOTOS;
 
 /* ===== v/data.js ===== */
 "use strict";
-/* Prumo · Escolas (vanilla) — dados núcleo do caso do Theo. FOTOS vem de _fotos.js. */
+/* Prumo · Escolas (vanilla) — dados núcleo do acompanhamento do Theo. FOTOS vem de _fotos.js. */
 
 var ESCOLA = { nome: "Colégio PrumoEscolas", sigla: "PE", dominio: "prumoescolas.exemplo" };
 
@@ -317,11 +317,11 @@ var FAMILIA = {
 var FONTES = {
   "Notas": { tipo: "Sistema acadêmico · ERP", desc: "Médias e avaliações lançadas pelos professores no diário de classe.",
     itens: [ { q: "3º bim", t: "Matemática 7,0 — queda de 1,2 ponto no bimestre." }, { q: "3º bim", t: "Inglês 9,1 — melhor média do ano." }, { q: "3º bim", t: "Português 8,1 — trajetória de alta." } ] },
-  "Docente": { tipo: "Observação estruturada · equipe escolar", desc: "Registros qualitativos e rubricas observacionais preenchidas pela equipe ao longo da rotina.",
+  "Docente": { tipo: "Observação estruturada · equipe escolar", desc: "Registros qualitativos e perguntas de observação preenchidas pela equipe ao longo da rotina.",
     observadores: ["Docentes", "Coordenação", "OE", "Inspetores"], escala: ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"],
     rubricas: [ { r: "Sustenta a atenção em tarefas longas", v: 2 }, { r: "Interage de forma colaborativa com os pares", v: 3 }, { r: "Cumpre os combinados de sala", v: 4 }, { r: "Demonstra iniciativa em atividades em grupo", v: 4 } ],
     itens: [ { q: "Ontem", t: "“Theo ficou isolado no recreio, afastado do grupo.” — Profa. Letícia Moreira" }, { q: "27 mai", t: "Boa parceria com Gabriel nas atividades em dupla, quando mediado." }, { q: "26 mai", t: "Dificuldade de sustentar atenção em tarefas longas. — Prof. de Matemática" } ] },
-  "Tarefas": { tipo: "Entregas e atividades · rubrica observacional", desc: "Status das tarefas de casa e atividades em sala, somado a uma rubrica objetiva preenchida pela equipe que acompanha as entregas do Theo.",
+  "Tarefas": { tipo: "Entregas e atividades · perguntas de observação", desc: "Status das tarefas de casa e atividades em sala, somado a perguntas objetivas preenchidas pela equipe que acompanha as entregas do Theo.",
     observadores: ["Prof. de Matemática", "Apoio pedagógico", "Prof. regente"], escala: ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"],
     rubricas: [ { r: "Entrega as tarefas de casa no prazo", v: 2 }, { r: "Conclui a tarefa quando dividida em etapas curtas", v: 4 }, { r: "Registra a tarefa na agenda sem ser lembrado", v: 2 }, { r: "Revisa a atividade antes de entregar", v: 3 } ],
     itens: [ { q: "21 mai", t: "Duas tarefas de Matemática entregues incompletas.", por: "Prof. de Matemática" }, { q: "14 mai", t: "No apoio individual, retoma o conteúdo com facilidade quando a tarefa é dividida em etapas curtas.", por: "Apoio pedagógico" } ] },
@@ -528,7 +528,7 @@ var TIPOLOGIA = [
   { k: "atender_familias",      label: "Atender Famílias",      tag: "ATENDER FAMÍLIAS",     icon: "heart",       desc: "Comunicação ou reunião com responsáveis" },
   { k: "alinhar_professores",   label: "Alinhar Professores",   tag: "ALINHAR PROFESSORES",  icon: "share",       desc: "Orientação prática para professores envolvidos" },
   { k: "adaptacao_pedagogica",  label: "Adaptação Pedagógica",  tag: "ADAPTAÇÃO PEDAGÓGICA", icon: "book",        desc: "Mudança em sala" },
-  { k: "observacao_estruturada",label: "Observação Estruturada",tag: "OBSERVAÇÃO ESTRUTURADA",icon: "eye",        desc: "Combinado vinculado a uma SAO ativa" },
+  { k: "observacao_estruturada",label: "Observação Estruturada",tag: "OBSERVAÇÃO ESTRUTURADA",icon: "eye",        desc: "Combinado vinculado a um pedido de observação ativo" },
   { k: "comunicacao_externa",   label: "Comunicação Externa",   tag: "COMUNICAÇÃO EXTERNA",  icon: "mail",        desc: "Contato com terapeuta, conselho tutelar etc." },
   { k: "mediacao_social",       label: "Mediação Social",       tag: "MEDIAÇÃO SOCIAL",      icon: "handHeart",   desc: "Intervenção em relação aluno-aluno" },
   { k: "acompanhamento_clinico",label: "Acompanhamento Clínico",tag: "ACOMPANHAMENTO CLÍNICO",icon: "stethoscope",desc: "Encaminhamento, acompanhamento, retorno" },
@@ -559,7 +559,7 @@ var RUBRICAS = [
 
 var SAO_THEO = {
   id: "sao-theo", rubrica: "Engajamento em duplas", rubricaKey: "engajamento_duplas", aluno: "Theo Mendes", turma: "4º Ano A",
-  destinatario: "Profa. Letícia Moreira", criada: "28/mai", periodo: "7 dias", restantes: "4 dias restantes", vinculo: "Caso do Theo (Socialização)",
+  destinatario: "Profa. Letícia Moreira", criada: "28/mai", periodo: "7 dias", restantes: "4 dias restantes", vinculo: "Acompanhamento do Theo (Socialização)",
   recebidas: 2, total: 3, validacao: "Cristiane Soares · 14/abr/2026",
   respostas: [
     { pergunta: "O aluno aceita o par sugerido sem resistência?", por: "Profa. Letícia · 30/mai", nivel: "Mais ou menos", obs: "Aceita, mas demora a entrar na tarefa. Em geral acaba engajando depois de 5 minutos." },
@@ -585,7 +585,7 @@ var DIMENSOES_REGISTRO = ["Aprendizado", "Socialização", "Saúde", "Comportame
 
 var DEVOLUTIVA = {
   titulo: "Conversa sobre socialização — semana de 02 a 06/jun",
-  contexto: "Caso ativo do Theo. Ligação com Fernanda em 08/jun às 10h45. Discussão centrada em atritos com Gabriel e isolamento no fim de semana.",
+  contexto: "Acompanhamento aberto do Theo. Ligação com Fernanda em 08/jun às 10h45. Discussão centrada em atritos com Gabriel e isolamento no fim de semana.",
   observacao: "Nesta semana, observamos que o Theo teve três atritos com colegas em oito dias, principalmente em atividades em dupla na Ed. Física. Ao mesmo tempo, ele segue engajado nos projetos em grupo e respondeu bem aos combinados de pausa em sala.",
   iaSugestao: "Vínculos próximos do Theo seguem ativos — em especial com Mariana e Bento, observados em atividades de leitura compartilhada.",
   iaFooter: "gerado pelo Farol · sem dado clínico · sem menção a colega em conflito.",
@@ -606,7 +606,7 @@ var RELATO_SOFIA = {
   passos: [
     { t: "ATENDER ESTUDANTE", d: "Conversar com a Sofia individualmente", resp: "Orientação · prazo HOJE" },
     { t: "MEDIAÇÃO SOCIAL", d: "Identificar as alunas envolvidas e mediar com cuidado", resp: "Coordenação + Orientação · prazo 2 dias" },
-    { t: "OBSERVAÇÃO ESTRUTURADA", d: "Abrir SAO “Isolamento no Recreio” para a Profa. de Recreio + Profa. Letícia", resp: "7 dias" },
+    { t: "OBSERVAÇÃO ESTRUTURADA", d: "Pedir observação “Isolamento no Recreio” para a Profa. de Recreio + Profa. Letícia", resp: "7 dias" },
     { t: "ATENDER FAMÍLIAS", d: "Reunião presencial com Patrícia", resp: "Coordenação · prazo 1 dia" },
   ],
 };
@@ -618,7 +618,7 @@ var SUA_SEMANA = {
     { label: "Combinados", valor: "12 ativos · 9 fluindo · 2 vencem hoje · 0 atrasado" },
     { label: "Casos", valor: "4 em acompanhamento · 1 revisão hoje · 0 sem dono" },
     { label: "Relatos", valor: "3 atendidos esta semana · SLA médio 18 min" },
-    { label: "SAOs", valor: "2 ativas · 5 respostas recebidas · 1 expira esta semana" },
+    { label: "Pedidos de observação", valor: "2 ativos · 5 respostas recebidas · 1 expira esta semana" },
   ],
   nota: "o Prumo não compara coordenações entre si · esta visão é apenas sua.",
 };
@@ -633,7 +633,7 @@ function sugestaoTexto(acao) {
   if (acao === "comunicar_familia")
     return "Olá, Fernanda e Carlos,\n\nGostaríamos de alinhar com vocês o que temos observado sobre o Theo nesta semana, especialmente na convivência com os colegas. Sentimos que uma conversa breve ajudaria a entender o que vocês percebem em casa.\n\nPodemos combinar um horário ainda esta semana?\n\nAbraço,\nCoordenação · Colégio PrumoEscolas";
   if (acao === "acionar_direcao")
-    return "Prezada direção,\n\nEncaminho para ciência o caso do Theo M. (4º A). Há sinais convergindo em Socialização e Aprendizado, com acompanhamento da coordenação e da orientação em curso.\n\nSugiro alinharmos os próximos passos antes da reunião com a família.\n\nCoordenação";
+    return "Prezada direção,\n\nEncaminho para ciência o acompanhamento do Theo M. (4º A). Há sinais convergindo em Socialização e Aprendizado, com acompanhamento da coordenação e da orientação em curso.\n\nSugiro alinharmos os próximos passos antes da reunião com a família.\n\nCoordenação";
   return "";
 }
 var ORIENTACOES = {
@@ -645,11 +645,11 @@ var TIPO_TITULO = {
   atender_familias: "Ligar para Fernanda (mãe) e alinhar o que ela observa em casa, sobretudo depois do fim de semana",
   alinhar_professores: "Alinhar com a regente e o Prof. de Matemática a tarefa em etapas curtas e a mediação da dupla na semana",
   adaptacao_pedagogica: "Ajustar a rotina do Theo em sala: pausas a cada 25 min, apoio visual nas transições e tarefa em blocos",
-  observacao_estruturada: "Abrir uma observação estruturada da convivência do Theo no recreio, vinculada a uma rubrica",
+  observacao_estruturada: "Pedir observação da convivência do Theo no recreio, com perguntas de observação",
   comunicacao_externa: "Contatar a neuropediatra do Theo para alinhar o acompanhamento do TDAH",
   mediacao_social: "Mediar a dupla Theo + Gabriel nas aulas de Ed. Física, com o professor presente",
   acompanhamento_clinico: "Registrar o retorno do acompanhamento do TDAH (laudo da Dra. Helena · seguimento semestral)",
-  documentacao: "Registrar a ata do combinado no caso do Theo (Socialização + Aprendizado)",
+  documentacao: "Registrar a ata do combinado no acompanhamento do Theo (Socialização + Aprendizado)",
   revisao_plano: "Checkpoint de revisão das prioridades do Theo na sexta (13/jun, 14h)",
 };
 var TIPO_RESP = {
@@ -661,11 +661,11 @@ var TIPO_ORIENT = {
   atender_familias: ORIENTACOES.atender_familia,
   alinhar_professores: "Reúna por 10 minutos a Profa. Letícia Moreira (regente / Ed. Física), o Prof. de Matemática e a orientadora Cristina Almeida. Combine três pontos concretos para a semana: (1) manter a mediação da dupla Theo + Gabriel nas atividades em pares — que já vira parceria produtiva quando há presença adulta; (2) em Matemática, dividir a tarefa em blocos curtos e usar apoio visual nas transições, como recomenda o laudo; (3) avisar a coordenação no mesmo dia se houver novo atrito no recreio. Registre quem ficou com o quê, sem rótulos e focando no que cada um observa.",
   adaptacao_pedagogica: "Ajuste a rotina de sala às recomendações do laudo de TDAH (CID F90.0) do Theo: pausas curtas a cada 25 minutos, apoio visual nas transições entre atividades e tarefas em etapas curtas — que é como ele rende melhor, segundo o apoio pedagógico e a própria Fernanda (“em casa entende rápido, mas cansa de tarefas longas”). Combine a mudança com ele de forma previsível e observe a resposta por uma semana antes de ampliar. Evite expor o ajuste para a turma.",
-  observacao_estruturada: "Vincule este combinado a uma SAO ativa. O Theo já tem a rubrica “Engajamento em duplas” em curso com a Profa. Letícia (4 dias restantes) refinando a convivência com o Gabriel — considere aguardar a 3ª resposta antes de abrir outra. Se o foco for o relato de isolamento no recreio, a rubrica “Isolamento no Recreio” (3 itens) é a indicada. Período curto, 7 dias, sem rotular a criança.",
+  observacao_estruturada: "Vincule este combinado a um pedido de observação ativo. O Theo já tem as perguntas “Engajamento em duplas” em curso com a Profa. Letícia (4 dias restantes) refinando a convivência com o Gabriel — considere aguardar a 3ª resposta antes de abrir outro pedido. Se o foco for o relato de isolamento no recreio, as perguntas “Isolamento no Recreio” (3 itens) são as indicadas. Período curto, 7 dias, sem rotular a criança.",
   mediacao_social: "Conduza a mediação entre Theo e Gabriel S. em um momento calmo das aulas de Ed. Física, com o Prof. Ricardo presente — nunca logo após um atrito. A dupla já mostrou virar parceria produtiva com mediação adulta (observação de 02/jun). Comece por uma tarefa curta de interesse dos dois, combine uma regra simples entre eles e marque um retorno. Registre só o essencial — e não nomeie o colega na comunicação que for para a família.",
   acompanhamento_clinico: "Registre o acompanhamento do TDAH (CID F90.0) apenas com fonte documental: o laudo da Dra. Helena Vasconcelos (neuropediatra) está anexado e datado de 10/10/2025; o seguimento é semestral. Se a família relatar ajuste de medicação pelo Prumo Famílias, anexe a nova prescrição antes de atualizar o caso. A asma leve segue controlada com Salbutamol conforme prescrição. Sem conclusão diagnóstica própria — a escola observa e encaminha, não diagnostica.",
-  documentacao: "Registre a ata deste combinado vinculada ao caso do Theo (Socialização + Aprendizado), com data e responsável (Coordenação · Renata Lopes), retomando os combinados em curso: mediação Theo + Gabriel, acolhimento individual com a Cristina (31/mai) e o contato com a Fernanda. Descreva fatos observáveis, não interpretações, preservando o que for da intimidade do Theo. A ata fica disponível para a Orientação e para a direção, se acionada.",
-  revisao_plano: "Marque o checkpoint de revisão do caso do Theo para sexta (13/jun, 14h), como combinado na devolutiva à família. Revise: a curva de Matemática (queda de 1,2 ponto — acompanhar, não isolar), o resultado da SAO “Engajamento em duplas”, a resposta da Fernanda sobre o fim de semana e os três combinados em curso. Decida o que encerrar, o que segue ativo e se o foco continua em Socialização. Ajuste as prioridades conforme a leitura mais recente.",
+  documentacao: "Registre a ata deste combinado vinculada ao acompanhamento do Theo (Socialização + Aprendizado), com data e responsável (Coordenação · Renata Lopes), retomando os combinados em curso: mediação Theo + Gabriel, acolhimento individual com a Cristina (31/mai) e o contato com a Fernanda. Descreva fatos observáveis, não interpretações, preservando o que for da intimidade do Theo. A ata fica disponível para a Orientação e para a direção, se acionada.",
+  revisao_plano: "Marque o checkpoint de revisão do acompanhamento do Theo para sexta (13/jun, 14h), como combinado na devolutiva à família. Revise: a curva de Matemática (queda de 1,2 ponto — acompanhar, não isolar), as respostas do pedido de observação “Engajamento em duplas”, a resposta da Fernanda sobre o fim de semana e os três combinados em curso. Decida o que encerrar, o que segue ativo e se o foco continua em Socialização. Ajuste as prioridades conforme a leitura mais recente.",
 };
 function ehEmailTipo(k) { return k === "atender_familias" || k === "comunicacao_externa"; }
 function corpoEmailTipo(tipo) {
@@ -754,7 +754,7 @@ function statusPill(kind) {
 
 var PULSE_TONES = { terra: { ink: T.terraInk, soft: T.terraSoft }, olive: { ink: T.olive, soft: T.oliveSoft }, slate: { ink: T.slate, soft: T.slateSoft }, neutral: { ink: T.ink, soft: T.line } };
 
-/* card de métrica do pulse (dashboard) */
+/* card de métrica do pulse (mesa) */
 function pulseCard(l) {
   var tn = PULSE_TONES[l.tone] || PULSE_TONES.neutral;
   var zero = l.num === "0" || l.num === 0;
@@ -816,12 +816,12 @@ function sugestaoCard(s) {
     h("div", { style: { font: "400 11px " + T.sans, color: T.mute, display: "flex", alignItems: "center", gap: "6px" } }, icon("compass", 12), "gerado pelo Farol · você decide"));
 }
 
-/* card de SAO ativa */
+/* card de pedido de observação ativo */
 function saoAtivaCard(sao) {
-  var pairs = [ ["Aluno", sao.aluno + " · " + sao.turma], ["Rubrica", sao.rubrica + " (" + sao.rubricaInfo + ")"], ["Destinatário", sao.destinatario], ["Período", sao.periodo + " · " + sao.restantes], ["Respostas recebidas", sao.recebidas + " de " + sao.total] ];
+  var pairs = [ ["Aluno", sao.aluno + " · " + sao.turma], ["Perguntas de observação", sao.rubrica + " (" + sao.rubricaInfo + ")"], ["Destinatário", sao.destinatario], ["Período", sao.periodo + " · " + sao.restantes], ["Respostas recebidas", sao.recebidas + " de " + sao.total] ];
   return h("div", { style: { background: T.panel, border: "1px solid " + T.line, borderRadius: "14px", padding: "20px 22px" } },
     h("div", { style: { display: "flex", alignItems: "center", gap: "9px", marginBottom: "12px", flexWrap: "wrap" } },
-      h("span", { style: { font: "600 10px " + T.sans, letterSpacing: ".1em", textTransform: "uppercase", color: T.terraInk, background: T.terraSoft, borderRadius: "6px", padding: "4px 10px" } }, "SAO ativa"),
+      h("span", { style: { font: "600 10px " + T.sans, letterSpacing: ".1em", textTransform: "uppercase", color: T.terraInk, background: T.terraSoft, borderRadius: "6px", padding: "4px 10px" } }, "Pedido de observação ativo"),
       h("span", { style: { font: "400 18px " + T.serif, color: T.ink, letterSpacing: "-.01em" } }, sao.rubrica)),
     h("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 28px", maxWidth: "640px" } },
       pairs.map(function (p) { return h("div", { style: { display: "flex", flexDirection: "column", gap: "2px" } },
@@ -951,7 +951,7 @@ function mesaScreen() {
       fontes: "Fontes: professora · família · registro escolar",
       proximo: "Próximo passo sugerido: conversar com a família e pedir uma observação curta à professora.",
       cta: "Abrir acompanhamento",
-      confianca: "Sem diagnóstico. Sem ranking. Você decide.",
+      confianca: "Sem diagnóstico. Sem ranking. Sem comparação entre alunos. Você decide.",
       onClick: function () { go("caso"); }
     },
     {
@@ -995,7 +995,7 @@ function mesaScreen() {
   page.appendChild(h("div", { style: { marginTop: "30px", borderTop: "1px solid " + T.line, paddingTop: "18px",
     display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", flexWrap: "wrap" } },
     h("div", { style: { font: "400 12.5px/1.6 " + T.sans, color: T.mute, maxWidth: "560px" } },
-      "Outros sinais, SAOs e combinados continuam registrados nos casos. A primeira decisão fica aqui, sem comparar alunos."),
+      "Outros sinais, pedidos de observação e combinados continuam registrados nos acompanhamentos. A primeira decisão fica aqui, sem comparar alunos."),
     btn({ kind: "ghost", label: "Ver todos os alunos", onClick: function () { go("alunos"); } })));
 
   return page;
@@ -1007,8 +1007,8 @@ function mesaScreenLegacy() {
   var sinais = SINAIS.filter(function (s) { return ["theo", "luiza", "ana", "pedro"].indexOf(s.id) >= 0 && !S.mesa.dismissed[s.id]; });
 
   var sugestoes = [
-    { id: "sug-theo", tipoLabel: "ATENDER FAMÍLIAS", texto: "Para o caso do Theo Mendes — sugerimos ligar para Fernanda (mãe) e alinhar o que ela observa em casa.", porque: "2 sinais convergentes (Socialização + Aprendizado) e observação familiar recente sobre isolamento no fim de semana.", respLabel: "Responsável típico", resp: "Coordenação", prazoLabel: "Prazo sugerido", prazo: "esta semana", primary: "Criar combinado deste tipo", primaryIcon: "plus", onPrimary: function () { showToast("Combinado de Atender Famílias aberto no caso do Theo"); go("caso"); } },
-    { id: "sug-ana", tipoLabel: "OBSERVAÇÃO ESTRUTURADA", texto: "Para Ana Beatriz (2º Ano A) — sugerimos abrir uma Observação Estruturada de 7 dias com a rubrica “Mudança Brusca de Humor”.", porque: "Queda de humor relatada pela família somada à observação docente sobre retração em sala.", respLabel: "Responsável típico", resp: "Orientação + Profa. regente", prazoLabel: "Período sugerido", prazo: "7 dias", primary: "Criar SAO", primaryIcon: "plus", onPrimary: function () { go("sao-criar"); } },
+    { id: "sug-theo", tipoLabel: "ATENDER FAMÍLIAS", texto: "Para o acompanhamento do Theo Mendes — sugerimos ligar para Fernanda (mãe) e alinhar o que ela observa em casa.", porque: "2 sinais convergentes (Socialização + Aprendizado) e observação familiar recente sobre isolamento no fim de semana.", respLabel: "Responsável típico", resp: "Coordenação", prazoLabel: "Prazo sugerido", prazo: "esta semana", primary: "Criar combinado deste tipo", primaryIcon: "plus", onPrimary: function () { showToast("Combinado de Atender Famílias aberto no acompanhamento do Theo"); go("caso"); } },
+    { id: "sug-ana", tipoLabel: "OBSERVAÇÃO ESTRUTURADA", texto: "Para Ana Beatriz (2º Ano A) — sugerimos pedir uma observação de 7 dias com as perguntas “Mudança Brusca de Humor”.", porque: "Queda de humor relatada pela família somada à observação docente sobre retração em sala.", respLabel: "Responsável típico", resp: "Orientação + Profa. regente", prazoLabel: "Período sugerido", prazo: "7 dias", primary: "Pedir observação", primaryIcon: "plus", onPrimary: function () { go("sao-criar"); } },
   ].filter(function (s) { return !S.mesa.sugDescartada[s.id]; });
 
   var page = h("div", { style: { padding: "40px 48px 64px", maxWidth: "980px", margin: "0 auto" }, "data-screen-label": "Mesa da Coordenação" });
@@ -1022,8 +1022,8 @@ function mesaScreenLegacy() {
       { num: "2", unit: "combinados", d: "vencem hoje", to: "sec-vencendo", tone: "terra", icon: "clock" },
       { num: "0", unit: "combinados", d: "atrasados", tone: "olive", icon: "check" },
       { num: "3", unit: "sinais", d: "aguardando sua decisão", to: "sec-sinais", tone: "terra", icon: "flag" },
-      { num: "1", unit: "SAO", d: "ativa · 4 dias restantes", to: "sec-saos", tone: "slate", icon: "eye" },
-      { num: "1", unit: "caso", d: "aguarda revisão · prevista hoje", to: "sec-revisao", tone: "terra", icon: "fileText" },
+      { num: "1", unit: "observação", d: "ativa · 4 dias restantes", to: "sec-saos", tone: "slate", icon: "eye" },
+      { num: "1", unit: "acompanhamento", d: "aguarda revisão · prevista hoje", to: "sec-revisao", tone: "terra", icon: "fileText" },
     ])));
 
   // bloco 1 — prioridade(s) do dia (relato)
@@ -1045,23 +1045,23 @@ function mesaScreenLegacy() {
   if (sugestoes.length) page.appendChild(mesaSection(null, "Sugestões para o seu olhar", "Possíveis combinados a partir do contexto atual · você decide o tipo, o responsável e se vira combinado.",
     h("div", { style: { display: "flex", flexDirection: "column", gap: "16px" } }, sugestoes.map(sugestaoCard))));
 
-  // bloco 4 — SAOs em curso
-  page.appendChild(mesaSection("sec-saos", "Observações solicitadas em curso", "Rubricas ativas que estão refinando a leitura da escola.",
+  // bloco 4 — pedidos de observação em curso
+  page.appendChild(mesaSection("sec-saos", "Pedidos de observação em curso", "Perguntas de observação que estão refinando a leitura da escola.",
     h("div", { style: { display: "flex", flexDirection: "column", gap: "14px" } }, SAO_ATIVAS.map(saoAtivaCard))));
 
   // bloco 5 — combinados vencendo
   page.appendChild(mesaSection("sec-vencendo", "Combinados vencendo", "Ações que pedem atualização hoje ou amanhã.",
     h("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", alignItems: "start" } }, VENCENDO.map(vencendoCard))));
 
-  // bloco 6 — casos aguardando revisão
-  page.appendChild(mesaSection("sec-revisao", "Casos aguardando revisão", null,
+  // bloco 6 — acompanhamentos aguardando revisão
+  page.appendChild(mesaSection("sec-revisao", "Acompanhamentos aguardando revisão", null,
     h("div", { style: { background: T.panel, border: "1px solid " + T.line, borderRadius: "14px", padding: "20px 22px", display: "flex", alignItems: "center", gap: "18px", flexWrap: "wrap" } },
       avatar(THEO.foto, "T", 48),
       h("div", { style: { flex: "1", minWidth: "220px" } },
-        h("div", { style: { font: "400 19px " + T.serif, color: T.ink, letterSpacing: "-.01em" } }, "Caso de Theo Mendes"),
+        h("div", { style: { font: "400 19px " + T.serif, color: T.ink, letterSpacing: "-.01em" } }, "Acompanhamento de Theo Mendes"),
         h("div", { style: { font: "400 12.5px " + T.sans, color: T.mute, marginTop: "4px" } }, "Última revisão: há 7 dias · próxima revisão prevista para hoje"),
         h("div", { style: { font: "400 12.5px " + T.sans, color: T.body, marginTop: "2px" } }, "Coordenação: Renata Lopes")),
-      btn({ kind: "primary", icon: "chevron", label: "Abrir caso", onClick: function () { go("caso"); } }))));
+      btn({ kind: "primary", icon: "chevron", label: "Abrir acompanhamento", onClick: function () { go("caso"); } }))));
 
   // bloco 7 — sua semana
   page.appendChild(suaSemana());
@@ -1362,7 +1362,7 @@ function validadorBanner(termo) {
   return h("div", { style: { background: T.terraSoft, border: "1px solid " + T.terraLight, borderRadius: "12px", padding: "15px 17px", marginTop: "12px", display: "flex", flexDirection: "column", gap: "12px" } },
     h("div", { style: { display: "flex", gap: "11px" } },
       h("span", { style: { color: T.terraInk, flex: "none", marginTop: "1px", display: "grid", placeItems: "center" } }, icon("message", 17)),
-      h("div", {}, h("div", { style: { font: "500 13.5px/1.55 " + T.sans, color: T.ink } }, "Observamos um termo clínico."),
+      h("div", {}, h("div", { style: { font: "500 13.5px/1.55 " + T.sans, color: T.ink } }, "Ajuda para deixar o registro mais observável."),
         h("div", { style: { font: "400 12.5px/1.55 " + T.sans, color: T.body, marginTop: "3px" } }, "O Prumo registra o que você viu, não conclusões diagnósticas."))),
     h("div", {},
       h("div", { style: { font: "600 10px " + T.sans, letterSpacing: ".09em", textTransform: "uppercase", color: T.terraInk, marginBottom: "6px" } }, ehGenerica ? "Como reescrever" : "Sugestão de reescrita"),
@@ -1415,7 +1415,7 @@ function registroBody() {
     if (t2) { bannerHost.appendChild(validadorBanner(t2)); ta.style.borderColor = T.terraLight; } else { ta.style.borderColor = T.line; }
     refreshEnviar();
   });
-  var verLink = !regState.texto ? (function () { var b = h("button", { style: { marginTop: "9px", border: 0, background: "none", padding: 0, cursor: "pointer", font: "500 11.5px " + T.sans, color: T.terraInk, display: "inline-flex", alignItems: "center", gap: "5px" } }, icon("sparkle", 12), "Ver o validador em ação");
+  var verLink = !regState.texto ? (function () { var b = h("button", { style: { marginTop: "9px", border: 0, background: "none", padding: 0, cursor: "pointer", font: "500 11.5px " + T.sans, color: T.terraInk, display: "inline-flex", alignItems: "center", gap: "5px" } }, icon("sparkle", 12), "Ver ajuda de observação");
     b.addEventListener("click", function () { regState.texto = "Theo está agitado, parece TDAH descompensado e não para quieto na atividade."; regState.bannerOff = false; regState.justificado = false; rerenderRegistro(); }); return b; })() : null;
   var justNote = regState.justificado ? h("div", { style: { marginTop: "10px", font: "400 11.5px " + T.sans, color: T.mute, display: "flex", alignItems: "center", gap: "6px" } }, icon("check", 12), "Você optou por enviar como está — a coordenação verá a observação original.") : null;
   body.appendChild(campoR("O que aconteceu", null, h("div", {}, h("div", { style: { position: "relative" } }, ta, counter), verLink, bannerHost, justNote)));
@@ -1474,7 +1474,7 @@ function rubricaOption(r) {
     sel ? h("div", { style: { marginTop: "14px", marginLeft: "29px", borderTop: "1px solid " + T.line, paddingTop: "14px" } },
       h("div", { style: { font: "400 12px/1.55 " + T.sans, color: T.mute, marginBottom: "11px" } }, "Cada item é respondido em escala curta (3 níveis: Sim · Mais ou menos · Não) + campo de observação livre opcional (≤100 chars)."),
       h("ol", { style: { margin: 0, paddingLeft: "18px", display: "flex", flexDirection: "column", gap: "7px" } }, r.itens.map(function (it) { return h("li", { style: { font: "400 13px/1.5 " + T.sans, color: T.ink } }, it); })),
-      h("div", { style: { display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "13px", font: "500 11px " + T.sans, color: T.olive, background: T.oliveSoft, borderRadius: "999px", padding: "4px 11px" } }, icon("check", 12), "Validação clínica: " + r.validacao)) : null);
+      h("div", { style: { display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "13px", font: "500 11px " + T.sans, color: T.olive, background: T.oliveSoft, borderRadius: "999px", padding: "4px 11px" } }, icon("check", 12), "Revisão da equipe: " + r.validacao)) : null);
   box.addEventListener("click", function () { saoState.rubrica = r.k; render(); });
   return box;
 }
@@ -1483,11 +1483,11 @@ function criacaoSaoScreen() {
     return h("div", { style: { minHeight: "100%", display: "grid", placeItems: "center", padding: "48px 24px", background: T.bg } },
       h("div", { style: { maxWidth: "460px", textAlign: "center" } },
         h("div", { style: { width: "60px", height: "60px", borderRadius: "50%", background: T.oliveSoft, color: T.olive, display: "grid", placeItems: "center", margin: "0 auto 20px" } }, icon("check", 30)),
-        h("div", { style: { font: "400 28px " + T.serif, color: T.ink, letterSpacing: "-.01em" } }, "SAO enviada"), rule(44, 16, 18),
-        h("div", { style: { font: "400 14.5px/1.7 " + T.sans, color: T.body } }, "Profa. Letícia e Patrícia + Rodrigo receberam a solicitação. Acompanhamento na Mesa em “Observações solicitadas em curso”."),
+      h("div", { style: { font: "400 28px " + T.serif, color: T.ink, letterSpacing: "-.01em" } }, "Pedido de observação enviado"), rule(44, 16, 18),
+        h("div", { style: { font: "400 14.5px/1.7 " + T.sans, color: T.body } }, "Profa. Letícia e Patrícia + Rodrigo receberam a solicitação. Acompanhamento na Mesa em “Pedidos de observação em curso”."),
         h("div", { style: { display: "flex", gap: "10px", justifyContent: "center", marginTop: "28px", flexWrap: "wrap" } },
           btn({ kind: "primary", icon: "arrowLeft", label: "Voltar à Mesa", onClick: function () { go("mesa"); } }),
-          btn({ kind: "secondary", label: "Abrir caso da Ana", onClick: function () { showToast("Caso da Ana ainda não aberto"); go("mesa"); } }))));
+          btn({ kind: "secondary", label: "Abrir acompanhamento da Ana", onClick: function () { showToast("Acompanhamento da Ana ainda não aberto"); go("mesa"); } }))));
   }
   var DEST = [ { k: "regente", label: "Profa. regente — Letícia Moreira", sub: "(Ed. Física é colateral)" }, { k: "familia", label: "Família — Patrícia e Rodrigo", sub: "(responsáveis principais)" }, { k: "orientacao", label: "Orientação — Cristina Almeida", sub: "(observa internamente)" } ];
   var porqueTa = h("textarea", { rows: "3", maxlength: "200", style: { width: "100%", resize: "vertical", border: "1px solid " + T.line, borderRadius: "12px", padding: "12px 14px", font: "400 13.5px/1.6 " + T.sans, color: T.ink, background: T.panel } });
@@ -1500,36 +1500,36 @@ function criacaoSaoScreen() {
   var body = h("div", { style: { flex: "1", minHeight: 0, overflow: "auto" } },
     h("div", { style: { padding: "34px 44px 30px", maxWidth: "760px", margin: "0 auto" } },
       (function () { var b = h("button", { style: { display: "inline-flex", alignItems: "center", gap: "7px", border: 0, background: "none", color: T.mute, cursor: "pointer", font: "500 13px " + T.sans, padding: 0, marginBottom: "18px" } }, icon("arrowLeft", 17), "Voltar à Mesa"); b.addEventListener("click", function () { go("mesa"); }); return b; })(),
-      h("h1", { style: { font: "400 30px " + T.serif, color: T.olive, letterSpacing: "-.015em", margin: 0 } }, "Nova Solicitação Ativa de Observação"),
+      h("h1", { style: { font: "400 30px " + T.serif, color: T.olive, letterSpacing: "-.015em", margin: 0 } }, "Novo pedido de observação"),
       rule(44, 14, 0),
-      h("div", { style: { font: "400 14px/1.65 " + T.sans, color: T.body, marginTop: "16px", marginBottom: "34px", maxWidth: "600px" } }, "Esta solicitação refina a leitura da escola sobre uma situação específica. Você não está avaliando ninguém — está pedindo um olhar direcionado por um período curto."),
+      h("div", { style: { font: "400 14px/1.65 " + T.sans, color: T.body, marginTop: "16px", marginBottom: "34px", maxWidth: "600px" } }, "Esta solicitação refina a leitura da escola sobre uma situação específica. Você não está avaliando ninguém — está pedindo um olhar direcionado por um período curto. Nada é enviado automaticamente."),
       campoS("1", "Aluno", h("div", { style: { display: "flex", alignItems: "center", gap: "12px", border: "1px solid " + T.line, background: T.panel, borderRadius: "12px", padding: "13px 15px", maxWidth: "420px" } },
         avatar(ANA.foto, "A", 40, null, false), h("div", {}, h("div", { style: { font: "500 14px " + T.sans, color: T.ink } }, "Ana Beatriz"), h("div", { style: { font: "400 12px " + T.sans, color: T.mute } }, "2º Ano A · pré-selecionada pela sugestão")))),
       campoS("2", "Por que você está pedindo esta observação?", h("div", {}, porqueTa, pc)),
-      campoS("3", "Escolher rubrica da biblioteca", h("div", {},
-        h("div", { style: { font: "400 12.5px/1.55 " + T.sans, color: T.mute, marginTop: "-4px", marginBottom: "14px" } }, "Rubricas curadas, validadas clinicamente e pedagogicamente. Cada rubrica tem 3 a 5 itens curtos."),
+      campoS("3", "Escolher perguntas de observação", h("div", {},
+        h("div", { style: { font: "400 12.5px/1.55 " + T.sans, color: T.mute, marginTop: "-4px", marginBottom: "14px" } }, "Perguntas curadas pela equipe para refinar uma observação escolar. Cada conjunto tem 3 a 5 itens curtos."),
         h("div", { style: { display: "flex", flexDirection: "column", gap: "10px" } }, RUBRICAS.map(rubricaOption)),
         h("div", { style: { display: "flex", gap: "16px", marginTop: "14px" } },
           (function () { var b = h("button", { style: { border: 0, background: "none", padding: 0, font: "600 12px " + T.sans, color: T.terraInk, cursor: "pointer" } }, "Ver biblioteca completa"); b.addEventListener("click", function () { showToast("Biblioteca completa (mock)"); }); return b; })(),
-          (function () { var b = h("button", { style: { border: 0, background: "none", padding: 0, font: "600 12px " + T.sans, color: T.mute, cursor: "pointer" } }, "Criar rubrica nova (com revisão)"); b.addEventListener("click", function () { showToast("Criação de rubrica passa por revisão clínica"); }); return b; })())),
+          (function () { var b = h("button", { style: { border: 0, background: "none", padding: 0, font: "600 12px " + T.sans, color: T.mute, cursor: "pointer" } }, "Criar perguntas novas (com revisão)"); b.addEventListener("click", function () { showToast("Perguntas novas passam por revisão da equipe"); }); return b; })())),
       campoS("4", "Destinatários", h("div", { style: { display: "flex", flexDirection: "column", gap: "10px" } }, DEST.map(function (d) {
         var on = saoState.dest[d.k];
         var b = h("button", { style: { display: "flex", alignItems: "center", gap: "12px", cursor: "pointer", textAlign: "left", border: "1.5px solid " + (on ? T.olive : T.line), background: on ? T.oliveSoft : T.bg, borderRadius: "11px", padding: "12px 15px" } },
           h("span", { style: { width: "20px", height: "20px", borderRadius: "6px", flex: "none", border: "2px solid " + (on ? T.olive : T.line), background: on ? T.olive : "transparent", color: "#fff", display: "grid", placeItems: "center" } }, on ? icon("check", 13) : null),
           h("span", { style: { font: "500 13.5px " + T.sans, color: T.ink } }, d.label), h("span", { style: { font: "400 12px " + T.sans, color: T.mute } }, d.sub));
         b.addEventListener("click", function () { saoState.dest[d.k] = !saoState.dest[d.k]; render(); }); return b; })),
-        "Cada destinatário recebe a mesma rubrica curta, do seu ponto de vista. As respostas convergem no caso da Ana."),
+        "Cada destinatário recebe as mesmas perguntas curtas, do seu ponto de vista. As respostas convergem no acompanhamento da Ana."),
       campoS("5", "Período", h("div", { style: { display: "flex", gap: "10px" } }, [["7", "7 dias"], ["14", "14 dias"], ["outro", "outro período"]].map(function (kv) {
         var on = saoState.periodo === kv[0];
         var b = h("button", { style: { cursor: "pointer", border: "1.5px solid " + (on ? T.terraInk : T.line), background: on ? T.terraSoft : T.bg, color: on ? T.terraInk : T.body, borderRadius: "999px", padding: "9px 20px", font: "600 13px " + T.sans } }, kv[1]);
         b.addEventListener("click", function () { saoState.periodo = kv[0]; render(); }); return b; }))),
       campoS("6", "Mensagem para os destinatários (opcional)", h("div", {}, msgTa, mc), "A microcopy padrão já carrega o tom de aliança. Edite apenas se for necessário."))));
 
-  return h("div", { style: { height: "100%", display: "flex", flexDirection: "column" }, "data-screen-label": "Criação de SAO" }, body,
+  return h("div", { style: { height: "100%", display: "flex", flexDirection: "column" }, "data-screen-label": "Pedido de observação" }, body,
     h("div", { style: { flex: "none", borderTop: "1px solid " + T.line, background: T.panel, boxShadow: "0 -8px 24px -16px rgba(28,28,30,.2)" } },
       h("div", { style: { maxWidth: "760px", margin: "0 auto", padding: "14px 44px", display: "flex", justifyContent: "flex-end", gap: "10px" } },
-        btn({ kind: "secondary", label: "Salvar como rascunho", onClick: function () { showToast("Rascunho salvo"); } }),
-        btn({ kind: "olive", icon: "send", label: "Enviar para destinatários", onClick: function () { saoState.enviado = true; render(); } }))));
+        btn({ kind: "secondary", label: "Salvar como rascunho", onClick: function () { showToast("Rascunho para revisão salvo"); } }),
+        btn({ kind: "olive", icon: "send", label: "Pedir observação", onClick: function () { saoState.enviado = true; render(); } }))));
 }
 window.criacaoSaoScreen = criacaoSaoScreen;
 
@@ -1550,27 +1550,27 @@ function respostaItem(r, n, last) {
 }
 function detalheSaoScreen() {
   var s = SAO_THEO;
-  return h("div", { style: { padding: "34px 44px 60px", maxWidth: "820px", margin: "0 auto" }, "data-screen-label": "Detalhe de SAO" },
+  return h("div", { style: { padding: "34px 44px 60px", maxWidth: "820px", margin: "0 auto" }, "data-screen-label": "Pedido de observação" },
     (function () { var b = h("button", { style: { display: "inline-flex", alignItems: "center", gap: "7px", border: 0, background: "none", color: T.mute, cursor: "pointer", font: "500 13px " + T.sans, padding: 0, marginBottom: "20px" } }, icon("arrowLeft", 17), "Voltar à Mesa"); b.addEventListener("click", function () { go("mesa"); }); return b; })(),
-    h("div", { style: { font: "600 11px " + T.sans, letterSpacing: ".12em", textTransform: "uppercase", color: T.terraInk } }, "SAO"),
+    h("div", { style: { font: "600 11px " + T.sans, letterSpacing: ".12em", textTransform: "uppercase", color: T.terraInk } }, "Pedido de observação"),
     h("h1", { style: { font: "400 30px " + T.serif, color: T.olive, letterSpacing: "-.015em", margin: "8px 0 0" } }, s.rubrica), rule(44, 14),
     h("div", { style: { display: "flex", flexWrap: "wrap", gap: "4px 22px", marginTop: "14px", font: "400 13px " + T.sans, color: T.body } },
       h("span", { style: { color: T.ink, fontWeight: 500 } }, s.aluno + " · " + s.turma), h("span", {}, "Criada em " + s.criada + " · Período: " + s.periodo + " · " + s.restantes)),
     h("div", { style: { display: "inline-flex", alignItems: "center", gap: "7px", marginTop: "12px", font: "500 11.5px " + T.sans, color: T.terraInk, background: T.terraSoft, borderRadius: "999px", padding: "5px 12px" } }, icon("heart", 13), "Vinculada ao " + s.vinculo),
     h("div", { style: { marginTop: "30px", background: T.panel, border: "1px solid " + T.line, borderRadius: "16px", padding: "24px 26px" } },
       h("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px", marginBottom: "6px" } },
-        h("span", { style: { font: "600 11px " + T.sans, letterSpacing: ".08em", textTransform: "uppercase", color: T.olive } }, "Rubrica · Engajamento em duplas (3 itens)"),
-        h("span", { style: { display: "inline-flex", alignItems: "center", gap: "6px", font: "500 11px " + T.sans, color: T.olive } }, icon("check", 12), "Validação clínica: " + s.validacao)),
+        h("span", { style: { font: "600 11px " + T.sans, letterSpacing: ".08em", textTransform: "uppercase", color: T.olive } }, "Perguntas de observação · Engajamento em duplas (3 itens)"),
+        h("span", { style: { display: "inline-flex", alignItems: "center", gap: "6px", font: "500 11px " + T.sans, color: T.olive } }, icon("check", 12), "Revisão da equipe: " + s.validacao)),
       h("div", { style: { height: "1px", background: T.line, margin: "14px 0 20px" } }),
       s.respostas.map(function (r, i) { return respostaItem(r, i + 1, i === s.respostas.length - 1); })),
     h("div", { style: { marginTop: "22px", background: T.oliveSoft, border: "1px solid " + T.oliveLight, borderRadius: "14px", padding: "20px 22px" } },
       h("div", { style: { font: "600 10px " + T.sans, letterSpacing: ".1em", textTransform: "uppercase", color: T.olive, marginBottom: "10px", display: "flex", alignItems: "center", gap: "7px" } }, icon("sparkle", 13), "Síntese preliminar"),
       h("div", { style: { font: "400 14px/1.7 " + T.sans, color: T.inkSoft } }, s.sintese),
-      h("div", { style: { font: "400 11px " + T.sans, color: T.olive, opacity: ".85", marginTop: "12px", display: "flex", alignItems: "center", gap: "6px" } }, icon("compass", 12), "síntese auto-gerada da rubrica · você revisa")),
+      h("div", { style: { font: "400 11px " + T.sans, color: T.olive, opacity: ".85", marginTop: "12px", display: "flex", alignItems: "center", gap: "6px" } }, icon("compass", 12), "rascunho para revisão · você decide")),
     h("div", { style: { display: "flex", gap: "10px", marginTop: "24px", flexWrap: "wrap" } },
       btn({ kind: "secondary", icon: "clock", label: "Aguardar resposta 3", onClick: function () { showToast("Aguardando a 3ª resposta da Profa. Letícia"); } }),
-      btn({ kind: "secondary", label: "Encerrar SAO antecipadamente", onClick: function () { showToast("SAO encerrada antecipadamente"); } }),
-      btn({ kind: "olive", icon: "chevron", label: "Ajustar Caso do Theo", onClick: function () { showToast("Abrindo o caso do Theo"); go("caso"); } })));
+      btn({ kind: "secondary", label: "Encerrar pedido antecipadamente", onClick: function () { showToast("Pedido de observação encerrado antecipadamente"); } }),
+      btn({ kind: "olive", icon: "chevron", label: "Ajustar acompanhamento", onClick: function () { showToast("Abrindo o acompanhamento do Theo"); go("caso"); } })));
 }
 window.detalheSaoScreen = detalheSaoScreen;
 
@@ -1582,7 +1582,7 @@ window.detalheSaoScreen = detalheSaoScreen;
 var devState = {};
 function resetDevolutiva() {
   var D = DEVOLUTIVA;
-  devState = { titulo: D.titulo, contexto: D.contexto, observacao: D.observacao, acaoEscola: D.acaoEscola, combinado: D.combinado, proxima: D.proxima, responsavel: D.responsavel, iaState: "aberta", aprov: "pendente", publicado: false };
+  devState = { titulo: D.titulo, contexto: D.contexto, observacao: D.observacao, acaoEscola: D.acaoEscola, combinado: D.combinado, proxima: D.proxima, responsavel: D.responsavel, iaState: "aberta", aprov: "pendente", publicado: false, editando: false };
 }
 window.resetDevolutiva = resetDevolutiva;
 
@@ -1629,93 +1629,108 @@ function famBlock(label, contentNode) {
 }
 function famDivider() { return h("div", { style: { height: "1px", background: "#E8DFD2", margin: "0 0 20px" } }); }
 
+function devolutivaText(value) {
+  var parts = String(value || "").split(/\n\n+/);
+  return h("div", { style: { font: "400 14px/1.7 " + T.sans, color: T.body } },
+    parts.map(function (p, i) { return h("p", { style: { margin: i ? "10px 0 0" : 0 } }, p); }));
+}
+
+function devolutivaInput(key, rows) {
+  var base = { width: "100%", border: "1px solid " + T.line, borderRadius: "11px", padding: "12px 14px",
+    font: "400 13.5px/1.65 " + T.sans, color: T.ink, background: T.panel, outline: "none" };
+  var ctrl = rows === 1
+    ? h("input", { style: base })
+    : h("textarea", { rows: String(rows), style: Object.assign({}, base, { resize: "vertical" }) });
+  ctrl.value = devState[key] || "";
+  ctrl.addEventListener("input", function (e) { devState[key] = e.target.value; });
+  return ctrl;
+}
+
+function devolutivaCard(title, key, rows, note) {
+  return h("div", { style: { background: T.panel, border: "1px solid " + T.line, borderRadius: "14px",
+    padding: "22px 24px", boxShadow: "0 1px 2px rgba(28,28,30,.04)" } },
+    h("div", { style: { font: "600 10.5px " + T.sans, letterSpacing: ".1em", textTransform: "uppercase",
+      color: T.terraInk, marginBottom: "10px" } }, title),
+    devState.editando ? devolutivaInput(key, rows) : devolutivaText(devState[key]),
+    note ? h("div", { style: { font: "400 11.5px/1.55 " + T.sans, color: T.mute, marginTop: "12px" } }, note) : null);
+}
+
+function devolutivaConfirmLine(text) {
+  return h("div", { style: { display: "flex", alignItems: "center", gap: "10px", justifyContent: "center",
+    font: "500 14px " + T.sans, color: T.ink } },
+    h("span", { style: { width: "22px", height: "22px", borderRadius: "999px", background: T.oliveSoft,
+      color: T.olive, display: "grid", placeItems: "center", flex: "none" } }, icon("check", 13)),
+    h("span", {}, text));
+}
+
 function envioMediadoScreen() {
   if (!devState.titulo) resetDevolutiva();
   var D = DEVOLUTIVA;
+  var revisaoData = (devState.proxima || D.proxima).replace(/^Reunião curta na\s+/i, "");
   if (devState.publicado) {
     return h("div", { style: { minHeight: "100%", display: "grid", placeItems: "center", padding: "48px 24px", background: T.bg } },
-      h("div", { style: { maxWidth: "460px", textAlign: "center" } },
+      h("div", { style: { maxWidth: "520px", textAlign: "center", background: T.panel, border: "1px solid " + T.line,
+        borderRadius: "16px", padding: "34px 38px", boxShadow: "0 18px 44px -24px rgba(28,28,30,.28)" } },
         h("div", { style: { width: "60px", height: "60px", borderRadius: "50%", background: T.oliveSoft, color: T.olive, display: "grid", placeItems: "center", margin: "0 auto 20px" } }, icon("check", 30)),
-        h("div", { style: { font: "400 28px " + T.serif, color: T.ink, letterSpacing: "-.01em" } }, "Publicado"), rule(44, 16, 18),
-        h("div", { style: { font: "400 14.5px/1.7 " + T.sans, color: T.body } }, "Fernanda receberá a notificação por e-mail em até 1h. A devolutiva aparece agora no Prumo Famílias dela."),
+        h("div", { style: { font: "400 28px " + T.serif, color: T.ink, letterSpacing: "-.01em" } }, "Devolutiva enviada."),
+        rule(44, 16, 18),
+        h("div", { style: { display: "flex", flexDirection: "column", gap: "12px" } },
+          devolutivaConfirmLine("Combinado registrado."),
+          devolutivaConfirmLine("Revisão marcada para " + revisaoData + ".")),
+        h("div", { style: { font: "400 13px/1.65 " + T.sans, color: T.body, marginTop: "20px" } },
+          "A família verá a devolutiva aprovada no Prumo Famílias. O combinado e a revisão ficam registrados no acompanhamento."),
         h("div", { style: { display: "flex", gap: "10px", justifyContent: "center", marginTop: "28px", flexWrap: "wrap" } },
           btn({ kind: "secondary", icon: "external", label: "Ver no Prumo Famílias (preview)", onClick: function () { showToast("Pré-visualização da família aberta"); } }),
-          btn({ kind: "primary", icon: "arrowLeft", label: "Voltar ao caso do Theo", onClick: function () { go("caso"); } }))));
+          btn({ kind: "primary", icon: "arrowLeft", label: "Voltar ao acompanhamento", onClick: function () { go("caso"); } }))));
   }
 
-  var aprovMap = { pendente: { o: "Aguardando", oC: T.mute, ready: "Pronto para envio após aprovação" }, revisao: { o: "Em revisão", oC: T.terraInk, ready: "Aguardando a Orientação" }, aprovado: { o: "Aprovado", oC: T.olive, ready: "Pronto para envio" } }[devState.aprov];
+  var contentCards = h("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" } },
+    devolutivaCard("O que observamos", "observacao", 5),
+    devolutivaCard("O que a escola já fez", "acaoEscola", 4),
+    devolutivaCard("O que combinamos", "combinado", 4, "Apenas combinados aprovados entram na visão da família."),
+    devolutivaCard("Próximo contato", "proxima", 1, "A revisão fica registrada no acompanhamento do Theo."));
 
-  // preview refs
-  devPreview = {};
-  devPreview.titulo = h("div", { style: { font: "400 22px/1.25 " + T.serif, color: T.ink, letterSpacing: "-.01em" } }, devState.titulo);
-  devPreview.observacao = h("div", {});
-  devState.observacao.split("\n\n").forEach(function (p, i) { devPreview.observacao.appendChild(h("p", { style: { margin: i ? "10px 0 0" : 0 } }, p)); });
-  devPreview.acaoEscola = document.createTextNode(devState.acaoEscola);
-  devPreview.combinado = document.createTextNode(devState.combinado);
-  devPreview.proxima = document.createTextNode(devState.proxima + ".");
+  var reviewBox = h("div", { style: { background: T.oliveSoft, border: "1px solid " + T.oliveLight,
+    borderRadius: "14px", padding: "18px 20px" } },
+    h("div", { style: { font: "600 10px " + T.sans, letterSpacing: ".1em", textTransform: "uppercase",
+      color: T.olive, display: "flex", alignItems: "center", gap: "7px", marginBottom: "9px" } }, icon("check", 13), "Revisão humana da escola"),
+    h("div", { style: { font: "400 13px/1.65 " + T.sans, color: T.inkSoft } },
+      "O Prumo preparou o rascunho. A coordenação revisa, ajusta e decide antes de enviar."),
+    h("div", { style: { font: "400 11.5px " + T.sans, color: T.olive, marginTop: "10px" } },
+      "Nada é enviado automaticamente."));
 
-  // coluna esquerda
-  var left = h("div", { style: { background: T.panel, border: "1px solid " + T.line, borderRadius: "16px", padding: "26px 28px" } },
-    h("div", { style: { font: "600 10px " + T.sans, letterSpacing: ".12em", textTransform: "uppercase", color: T.mute, marginBottom: "20px" } }, "Versão interna · edição"),
-    devField("1", "Título", "titulo", 1),
-    devField("2", "Contexto", "contexto", 3, true),
-    devField("3", "Observação compartilhável", "observacao", 5));
-  if (devState.iaState === "aberta") {
-    left.appendChild(h("div", { style: { background: T.oliveSoft, border: "1px solid " + T.oliveLight, borderRadius: "12px", padding: "15px 17px", margin: "-8px 0 22px", display: "flex", flexDirection: "column", gap: "11px" } },
-      h("div", { style: { font: "600 10px " + T.sans, letterSpacing: ".08em", textTransform: "uppercase", color: T.olive, display: "flex", alignItems: "center", gap: "7px" } }, icon("sparkle", 13), "Sugestão da IA · você revisa antes da família ver"),
-      h("div", { style: { font: "400 13px/1.6 " + T.sans, color: T.inkSoft } }, "A IA sugere acrescentar uma frase de contexto:", h("span", { style: { display: "block", fontStyle: "italic", fontFamily: T.serif, color: T.ink, marginTop: "6px" } }, "“" + D.iaSugestao + "”")),
-      h("div", { style: { display: "flex", gap: "8px", flexWrap: "wrap" } },
-        btn({ kind: "olive", icon: "check", label: "Aceitar", onClick: function () { devState.observacao = devState.observacao + "\n\n" + D.iaSugestao; devState.iaState = "aceita"; showToast("Sugestão incorporada"); render(); } }),
-        btn({ kind: "secondary", icon: "pencil", label: "Editar", onClick: function () { devState.iaState = "aceita"; showToast("Edite o texto na coluna interna"); render(); } }),
-        btn({ kind: "ghost", label: "Descartar", onClick: function () { devState.iaState = "descartada"; showToast("Sugestão descartada"); render(); } })),
-      h("div", { style: { font: "400 11px " + T.sans, color: T.olive, opacity: ".85", display: "flex", alignItems: "center", gap: "6px" } }, icon("compass", 12), D.iaFooter)));
-  }
-  left.appendChild(devField("4", "Ação da escola", "acaoEscola", 3));
-  left.appendChild(devField("5", "Combinado com a família", "combinado", 3, false, "Apenas 1 ação pedida à família por devolutiva."));
-  left.appendChild(devField("6", "Próxima revisão", "proxima", 1));
-  left.appendChild(devField("7", "Responsável de contato", "responsavel", 1));
-
-  // coluna direita — preview família
-  var famActions = h("div", { style: { display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "16px" } },
-    ["Estou ciente", "Quero conversar", "Tenho uma observação"].map(function (b, i) { return h("span", { style: { font: "600 12px " + T.sans, color: i === 0 ? "#fff" : T.terraInk, background: i === 0 ? T.terraInk : "#fff", border: "1px solid " + T.terraLight, borderRadius: "9px", padding: "9px 14px" } }, b); }));
-  var resumoNode = h("span", {}, D.familia.resumo, h("button", { style: { display: "inline-flex", alignItems: "center", gap: "4px", border: 0, background: "none", padding: 0, marginLeft: "6px", font: "600 12px " + T.sans, color: T.terraInk, cursor: "pointer" } }, "Ler completa ", icon("chevron", 12, 1.75, { transform: "rotate(90deg)" })));
-  var right = h("div", { style: { position: "relative" } },
-    h("div", { style: { position: "absolute", left: "-16px", top: "40px", bottom: "40px", width: "1px", background: "repeating-linear-gradient(" + T.line + " 0 6px, transparent 6px 12px)" } }),
-    h("div", { style: { background: "#FCFAF6", border: "1px solid " + T.line, borderRadius: "16px", padding: "26px 28px", boxShadow: "0 1px 2px rgba(28,28,30,.04)" } },
-      h("div", { style: { font: "400 16px " + T.serif, color: T.terraInk, marginBottom: "22px" } }, h("span", { style: { color: T.terra } }, "·"), "Prumo Famílias"),
-      devPreview.titulo,
-      h("div", { style: { font: "400 12.5px " + T.sans, color: T.body, marginTop: "10px" } }, D.familia.autor),
-      h("div", { style: { font: "400 11.5px " + T.sans, color: T.mute, marginBottom: "20px" } }, D.familia.quando),
-      famDivider(), famBlock("Resumo", resumoNode),
-      famDivider(), famBlock("O que observamos", devPreview.observacao),
-      famDivider(), famBlock("O que a escola está fazendo", devPreview.acaoEscola),
-      famDivider(), famBlock("O que combinamos com você", devPreview.combinado),
-      famDivider(), famBlock("Próxima revisão", devPreview.proxima),
-      famDivider(), famActions,
-      h("div", { style: { font: "400 11.5px/1.55 " + T.sans, color: T.mute } }, D.familia.rodape)));
+  var visibilityBox = h("div", { style: { background: "#FCFAF6", border: "1px solid " + T.line,
+    borderRadius: "16px", padding: "22px 24px", boxShadow: "0 1px 2px rgba(28,28,30,.04)" } },
+    h("div", { style: { font: "400 18px " + T.serif, color: T.terraInk, marginBottom: "16px" } },
+      h("span", { style: { color: T.terra } }, "·"), "Visibilidade para a família"),
+    h("div", { style: { display: "flex", flexDirection: "column", gap: "14px" } },
+      h("div", { style: { display: "flex", gap: "10px", font: "400 13px/1.6 " + T.sans, color: T.body } },
+        h("span", { style: { color: T.olive, flex: "none", display: "grid", placeItems: "center", marginTop: "2px" } }, icon("eye", 14)),
+        h("span", {}, h("strong", { style: { color: T.ink } }, "A família verá: "), "esta devolutiva e os combinados aprovados.")),
+      h("div", { style: { display: "flex", gap: "10px", font: "400 13px/1.6 " + T.sans, color: T.body } },
+        h("span", { style: { color: T.terraInk, flex: "none", display: "grid", placeItems: "center", marginTop: "2px" } }, icon("lock", 14)),
+        h("span", {}, h("strong", { style: { color: T.ink } }, "A família não verá: "), "registros internos, hipóteses da equipe, dados de outras crianças ou comentários de professores."))));
 
   var scroll = h("div", { style: { flex: "1", minHeight: 0, overflow: "auto" } },
-    h("div", { style: { padding: "30px 40px 24px", maxWidth: "1320px", margin: "0 auto" } },
-      (function () { var b = h("button", { style: { display: "inline-flex", alignItems: "center", gap: "7px", border: 0, background: "none", color: T.mute, cursor: "pointer", font: "500 13px " + T.sans, padding: 0, marginBottom: "16px" } }, icon("arrowLeft", 17), "Voltar ao caso do Theo"); b.addEventListener("click", function () { go("caso"); }); return b; })(),
-      h("div", { style: { font: "600 11px " + T.sans, letterSpacing: ".12em", textTransform: "uppercase", color: T.terraInk } }, "Nova devolutiva"),
-      h("h1", { style: { font: "400 30px " + T.serif, color: T.olive, letterSpacing: "-.015em", margin: "8px 0 0" } }, "Caso de Theo Mendes"),
-      h("div", { style: { font: "400 italic 13.5px " + T.serif, color: T.mute, marginTop: "8px" } }, "Esta é a versão que a família verá. Você pode editar antes de publicar."),
-      h("div", { style: { display: "grid", gridTemplateColumns: "1.38fr 1fr", gap: "30px", marginTop: "26px", alignItems: "start" } }, left, right)));
+    h("div", { style: { padding: "34px 44px 30px", maxWidth: "1160px", margin: "0 auto" } },
+      (function () { var b = h("button", { style: { display: "inline-flex", alignItems: "center", gap: "7px", border: 0, background: "none", color: T.mute, cursor: "pointer", font: "500 13px " + T.sans, padding: 0, marginBottom: "16px" } }, icon("arrowLeft", 17), "Voltar ao acompanhamento"); b.addEventListener("click", function () { go("caso"); }); return b; })(),
+      h("div", { style: { font: "600 11px " + T.sans, letterSpacing: ".12em", textTransform: "uppercase", color: T.terraInk } }, "Devolutiva"),
+      h("h1", { style: { font: "400 36px " + T.serif, color: T.olive, letterSpacing: "-.02em", margin: "8px 0 0", lineHeight: "1.05" } }, "Preparar devolutiva para a família"),
+      h("div", { style: { font: "400 15px/1.65 " + T.sans, color: T.body, marginTop: "12px", maxWidth: "560px" } }, "O Prumo preparou um rascunho. Revise antes de enviar."),
+      h("div", { style: { display: "grid", gridTemplateColumns: "1fr 340px", gap: "24px", marginTop: "30px", alignItems: "start" } },
+        contentCards,
+        h("div", { style: { display: "flex", flexDirection: "column", gap: "16px" } }, reviewBox, visibilityBox))));
 
   var bar = h("div", { style: { flex: "none", borderTop: "1px solid " + T.line, background: T.panel, boxShadow: "0 -8px 24px -16px rgba(28,28,30,.2)" } },
-    h("div", { style: { maxWidth: "1320px", margin: "0 auto", padding: "14px 40px", display: "flex", alignItems: "center", gap: "24px", flexWrap: "wrap" } },
+    h("div", { style: { maxWidth: "1160px", margin: "0 auto", padding: "14px 44px", display: "flex", alignItems: "center", gap: "24px", flexWrap: "wrap" } },
       h("div", { style: { display: "flex", alignItems: "center", gap: "18px" } },
-        h("span", { style: { font: "600 10px " + T.sans, letterSpacing: ".1em", textTransform: "uppercase", color: T.mute } }, "Aprovação"),
+        h("span", { style: { font: "600 10px " + T.sans, letterSpacing: ".1em", textTransform: "uppercase", color: T.mute } }, "Revisão"),
         h("span", { style: { display: "inline-flex", alignItems: "center", gap: "7px", font: "500 12.5px " + T.sans, color: T.olive } }, icon("check", 15), "Coordenação ", h("span", { style: { color: T.mute } }, "(Renata)")),
-        h("span", { style: { display: "inline-flex", alignItems: "center", gap: "7px", font: "500 12.5px " + T.sans, color: aprovMap.oC } },
-          devState.aprov === "aprovado" ? icon("check", 15) : icon("clock", 15),
-          devState.aprov === "aprovado" ? "Aprovado por Cristina Almeida" : "Orientação ",
-          h("span", { style: { color: T.mute } }, devState.aprov === "aprovado" ? "" : "(Cristina) · " + aprovMap.o)),
-        h("span", { style: { font: "400 12px " + T.sans, color: devState.aprov === "aprovado" ? T.olive : T.mute } }, "· " + aprovMap.ready)),
+        h("span", { style: { font: "400 12px " + T.sans, color: T.mute } }, "· você decide o envio")),
       h("div", { style: { marginLeft: "auto", display: "flex", gap: "10px", flexWrap: "wrap" } },
-        btn({ kind: "secondary", label: "Salvar como rascunho", onClick: function () { showToast("Rascunho salvo"); } }),
-        btn({ kind: "secondary", icon: "send", label: "Solicitar aprovação da Orientação", style: { opacity: devState.aprov === "pendente" ? "1" : ".5", pointerEvents: devState.aprov === "pendente" ? "auto" : "none" }, onClick: function () { devState.aprov = "revisao"; showToast("Aprovação solicitada à Orientação"); clearTimeout(devAprovTimer); devAprovTimer = setTimeout(function () { devState.aprov = "aprovado"; if (S.view === "devolutiva") render(); }, 2600); render(); } }),
-        btn({ kind: "olive", icon: devState.aprov === "aprovado" ? "check" : "lock", label: devState.aprov === "aprovado" ? "Publicar" : "Publicar (aguardando)", style: { opacity: devState.aprov === "aprovado" ? "1" : ".45", pointerEvents: devState.aprov === "aprovado" ? "auto" : "none" }, onClick: function () { devState.publicado = true; render(); } }))));
+        btn({ kind: "primary", icon: "send", label: "Enviar para a família", onClick: function () { devState.publicado = true; devState.editando = false; render(); } }),
+        btn({ kind: "secondary", icon: "pencil", label: "Editar rascunho", onClick: function () { devState.editando = true; showToast("Rascunho aberto para edição"); render(); } }),
+        btn({ kind: "secondary", label: "Salvar pendente", onClick: function () { showToast("Rascunho salvo como pendente"); } }))));
 
   return h("div", { style: { height: "100%", display: "flex", flexDirection: "column" }, "data-screen-label": "Envio Mediado" }, scroll, bar);
 }
@@ -2012,7 +2027,7 @@ function casoScreen() {
         h("div", { style: { font: "400 14px " + T.sans, color: T.mute, marginTop: "10px" } }, "Caso de convivência e aprendizagem · dados simulados")),
       statusBadge("andamento", "Aberto pela coordenação · revisão em 7 dias")),
     h("div", { style: { marginTop: "20px", borderTop: "1px solid " + T.line, paddingTop: "15px", display: "flex", alignItems: "center", gap: "7px", font: "600 11.5px " + T.sans, color: T.mute } },
-      icon("lock", 13), "Sem diagnóstico. Sem ranking. Você decide.")
+      icon("lock", 13), "Sem diagnóstico. Sem ranking. Sem comparação entre alunos. Você decide.")
   ], { padding: "26px 28px", borderColor: T.terraLight, boxShadow: "0 10px 30px -18px rgba(28,28,30,.22)" }));
 
   page.appendChild(acompanhamentoSection("Por que este acompanhamento está aberto?",
@@ -2030,7 +2045,7 @@ function casoScreen() {
       suggestionBox("Conversar com a família esta semana e pedir uma observação curta à professora sobre atividades em dupla.", [icon("compass", 12), " Sugestão do Prumo · você decide"], false, null),
       h("div", { style: { display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "18px" } },
         btn({ kind: "primary", icon: "check", label: "Definir próximo passo", onClick: function () { showToast("Próximo passo definido para revisão humana"); } }),
-        btn({ kind: "secondary", label: "Pedir observação curta", onClick: function () { showToast("Pedido de observação curta preparado"); } }),
+        btn({ kind: "secondary", label: "Pedir observação", onClick: function () { showToast("Pedido de observação preparado"); } }),
         btn({ kind: "secondary", label: "Preparar devolutiva", onClick: function () { go("devolutiva"); } }))
     ])));
 
@@ -2078,7 +2093,7 @@ function fonteDrawer(nome) {
       h("div", { style: { display: "flex", flexWrap: "wrap", gap: "6px" } }, f.observadores.map(function (o) { return h("span", { style: { font: "600 10.5px " + T.sans, color: T.slate, background: T.slateSoft, borderRadius: "999px", padding: "4px 10px" } }, o); }))));
     if (f.rubricas) body.push(h("div", { style: { marginTop: "18px" } },
       h("div", { style: { display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "10px" } },
-        h("span", { style: { font: "600 10px " + T.sans, letterSpacing: ".1em", textTransform: "uppercase", color: T.mute } }, "Rubricas observadas"),
+        h("span", { style: { font: "600 10px " + T.sans, letterSpacing: ".1em", textTransform: "uppercase", color: T.mute } }, "Perguntas de observação"),
         h("span", { style: { font: "400 10px " + T.sans, color: T.mute } }, "escala: " + f.escala[0] + " → " + f.escala[f.escala.length - 1])),
       h("div", { style: { display: "flex", flexDirection: "column", gap: "12px" } }, f.rubricas.map(function (rb) {
         var m = rb.v >= 4 ? TONE.olive : (rb.v <= 2 ? TONE.terra : TONE.slate);
@@ -2417,7 +2432,7 @@ function vinculosConflitos() {
 function dimensaoScreen() {
   var d = DIMENSOES.filter(function (x) { return x.key === S.dimKey; })[0] || DIMENSOES[0];
   var niv = NIVEL[d.nivel], m = TONE[niv.tone];
-  var voltar = function () { var b = h("button", { style: { display: "inline-flex", alignItems: "center", gap: "7px", border: 0, background: "none", color: T.mute, cursor: "pointer", font: "500 13px " + T.sans, padding: 0, marginBottom: "26px" } }, icon("arrowLeft", 17), "Voltar ao caso do Theo"); b.addEventListener("click", function () { go("caso"); }); return b; };
+  var voltar = function () { var b = h("button", { style: { display: "inline-flex", alignItems: "center", gap: "7px", border: 0, background: "none", color: T.mute, cursor: "pointer", font: "500 13px " + T.sans, padding: 0, marginBottom: "26px" } }, icon("arrowLeft", 17), "Voltar ao acompanhamento"); b.addEventListener("click", function () { go("caso"); }); return b; };
   var page = h("div", { style: { padding: "36px 44px 70px", maxWidth: "920px", margin: "0 auto" }, "data-screen-label": "Dimensão · " + d.nome });
   page.appendChild(voltar());
   page.appendChild(h("div", { style: { display: "flex", alignItems: "center", gap: "14px" } },
@@ -2440,7 +2455,7 @@ function dimensaoScreen() {
   page.appendChild(dimBloco("Sinais recentes", h("div", {}, d.sinais.map(function (s, i) { return sinalItem(s, i === d.sinais.length - 1); }))));
   page.appendChild(dimBloco("Observações da família", obsList(d.familia, "terra")));
   page.appendChild(dimBloco("Observações da escola", obsList(d.escola, "slate")));
-  var voltar2 = h("button", { style: { display: "inline-flex", alignItems: "center", gap: "7px", marginTop: "36px", border: "1px solid " + T.line, background: T.panel, color: T.ink, cursor: "pointer", font: "600 13px " + T.sans, padding: "11px 16px", borderRadius: "10px" } }, icon("arrowLeft", 16), "Voltar ao caso do Theo");
+  var voltar2 = h("button", { style: { display: "inline-flex", alignItems: "center", gap: "7px", marginTop: "36px", border: "1px solid " + T.line, background: T.panel, color: T.ink, cursor: "pointer", font: "600 13px " + T.sans, padding: "11px 16px", borderRadius: "10px" } }, icon("arrowLeft", 16), "Voltar ao acompanhamento");
   voltar2.addEventListener("click", function () { go("caso"); });
   page.appendChild(voltar2);
   return page;
@@ -2507,7 +2522,7 @@ function sidebar(active) {
     { k: "mesa", icon: "home", label: "Mesa" },
     { k: "casos", icon: "heart", label: "Prioridades" },
     { k: "alunos", icon: "users", label: "Alunos" },
-    { k: "saos", icon: "eye", label: "SAOs" },
+    { k: "saos", icon: "eye", label: "Observações" },
     { k: "combinados", icon: "target", label: "Combinados" },
     { k: "relatos", icon: "message", label: "Relatos Famílias" },
   ];
